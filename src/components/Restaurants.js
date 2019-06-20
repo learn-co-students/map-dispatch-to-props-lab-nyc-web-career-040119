@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {addRestaurant} from '../actions/restaurants'
 import { connect } from 'react-redux';
 
 class Restaurants extends Component {
