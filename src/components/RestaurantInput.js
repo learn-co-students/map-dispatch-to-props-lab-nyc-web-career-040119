@@ -9,32 +9,17 @@ export class RestaurantInput extends Component {
     location: ''
   }
 
-  handleOnNameChange = (e) => {
+  handleOnChange = (e) => {
+    const { name, value } = e.target
     this.setState({
-      name: e.target.value
+      [name]: value
     })
   }
-
-  handleOnLocationChange = (e) => {
-    this.setState({
-      location: e.target.value
-    })
-  }
-
-  // handleOnChange = (e) => {
-  //   const { name, value } = e.target
-  //   console.log("name: ", name);
-  //   console.log("value: ", value);
-  //   this.setState({
-  //     [name]: value
-  //   })
-  //   debugger
-  // }
 
   handleOnSubmit = event => {
     event.preventDefault();
-    this.props.dispatch(addRestaurant(this.state))
-    // this.props.addRestaurant(this.state)
+    // this.props.dispatch(addRestaurant(this.state))
+    this.props.addRestaurant(this.state)
   }
 
   render() {
@@ -45,7 +30,7 @@ export class RestaurantInput extends Component {
           <input
             name="name"
             type="text"
-            onChange={(event) => this.handleOnNameChange(event)}
+            onChange={(event) => this.handleOnChange(event)}
             id="name"
             placeholder="restaurant name" />
         </p>
@@ -53,7 +38,7 @@ export class RestaurantInput extends Component {
           <input
             name="location"
             type="text"
-            onChange={(event) => this.handleOnLocationChange(event)}
+            onChange={(event) => this.handleOnChange(event)}
             id="location"
             placeholder="location" />
         </p>
@@ -63,4 +48,5 @@ export class RestaurantInput extends Component {
   }
 };
 
-export default connect()(RestaurantInput)
+// export default connect()(RestaurantInput)
+export default connect(null, { addRestaurant })(RestaurantInput)
